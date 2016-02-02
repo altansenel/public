@@ -17,7 +17,7 @@
    <extension point="org.eclipse.ui.menus">
       <menuContribution locationURI="menu:org.eclipse.jdt.ui.source.menu?after=generateGroup">
         <command
-        	  label="Generate toString() Method..."
+        	  label="Generate New toString()..."
               commandId="org.eclipse.ui.plugin.commands.generateToString"
               id="org.eclipse.ui.plugin.menus.sampleCommand">
         </command>
@@ -32,6 +32,30 @@
             sequence="Ctrl+Alt+7"
             schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
       </key>
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            objectClass="org.eclipse.ui.IEditorInput"
+            nameFilter="*.*"
+            id="SimplePopupMenu.contribution1">
+         <menu
+               label="Generate New Item"
+               path="additions"
+               id="SimplePopupMenu.menu1">
+            <separator
+                  name="group1">
+            </separator>
+         </menu>
+         <action
+               label="Generate New toString()..."
+               class="org.eclipse.ui.plugin.handlers.GenerateToStringHandler"
+               menubarPath="SimplePopupMenu.menu1/group1"
+               enablesFor="1"
+               id="SimplePopupMenu.newAction">
+         </action>
+      </objectContribution>
    </extension>
 
 </plugin>
