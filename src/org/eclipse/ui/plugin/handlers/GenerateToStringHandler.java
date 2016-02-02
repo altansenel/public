@@ -89,8 +89,6 @@ public class GenerateToStringHandler extends AbstractHandler {
 				lrw2.insertLast(methodDeclaration2, null);
 				
 
-
-
 				try {
 					TextEdit edits = rewriter.rewriteAST();
 					Document document = new Document(unit.getSource());
@@ -134,12 +132,6 @@ public class GenerateToStringHandler extends AbstractHandler {
 		declaration.modifiers().addAll(ast.newModifiers(modifiers));
 		declaration.setConstructor(isConstructor);
 		declaration.setBody(block);//bu boş zaten !!
-		
-		//burası da boş
-//		SingleVariableDeclaration newParam= ast.newSingleVariableDeclaration();
-//		newParam.setType(ast.newPrimitiveType(PrimitiveType.INT));
-//		newParam.setName(ast.newSimpleName("p1"));
-//		declaration.parameters().add(newParam);
 		return declaration;
 	}
 
