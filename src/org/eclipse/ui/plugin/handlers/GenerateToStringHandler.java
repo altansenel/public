@@ -10,6 +10,7 @@ import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.IField;
 import org.eclipse.jdt.core.IJavaElement;
+import org.eclipse.jdt.core.IMethod;
 import org.eclipse.jdt.core.JavaModelException;
 import org.eclipse.jdt.core.dom.AST;
 import org.eclipse.jdt.core.dom.ASTParser;
@@ -260,11 +261,29 @@ public class GenerateToStringHandler extends AbstractHandler implements IObjectA
 				for (IField field : unit.getTypes()[0].getFields()) {
 					fieldlist.add(field);
 				}
+				
 			} catch (JavaModelException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
+			//eleman yoksa bişey yapmasın!
+			if(fieldlist.size()==0) {
+				return;
+			}
+			
+			List<IMethod> methodlist = new ArrayList<IMethod>();
+			try {
+				for (IMethod method : unit.getTypes()[0].getMethods()) {
+					if(method.getElementName().equals("toString") && method.getSignature().equals("()QString;")) {
+						return;
+					}
+				}
 				
+			} catch (JavaModelException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+
 
 			// create a ASTRewrite
 			AST ast = astRoot.getAST();
