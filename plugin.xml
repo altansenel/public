@@ -29,7 +29,7 @@
       <key
             commandId="org.eclipse.ui.plugin.commands.generateToString"
             contextId="org.eclipse.ui.contexts.window"
-            sequence="Ctrl+Alt+7"
+            sequence="Ctrl+Shift+0"
             schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
       </key>
    </extension>
